@@ -20,7 +20,7 @@ app.set('trust proxy', 1) // trust first proxy
 app.set("view engine", "ejs");
 const { PORT, MONGODB_URI } = process.env;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on("error", (err) => {
   console.error(err);
   console.log(
