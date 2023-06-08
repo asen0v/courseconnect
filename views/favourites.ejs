@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link rel="icon" type="image/x-icon" href="../images/online-course.png">
+    <title>Favourites | CourseConnect</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+   <!-- Bootstrap CSS -->
+    <link href="../bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../offcanvas-navbar.css" rel="stylesheet" />
+    <script src="scripts/search-course.js"></script>
+  </head>
+   
+    <body class="bg-body-tertiary">
+    
+     
+        <%- include('common/header'); -%>
+
+    </header>
+ 
+ <main class="container">
+  
+    
+
+
+        
+          
+
+     
+    <div class="my-3 p-3 bg-body rounded shadow-sm align-items-center">
+      <h2 class="border-bottom pb-2 mb-0 "><img src="../images/reviews.png" alt="" title="" width="28px" height="28px"> Favourites</h2>
+      <div class="d-flex text-body-secondary pt-3">
+    <p class="pb-3 mb-0 small lh-sm border-bottom">
+      
+    
+      <div class="container">
+       
+        <ul class="list-group">
+        <% courses.forEach(course => { %>
+
+          <div class="col-12">
+    <div class="card">
+        <h5 class="card-header"> <img src="./images/online-course.png" width="28px" height="28px"> <%= course.course_title %> </strong>
+       
+        </h5>
+        <div class="card-body">
+          <ul class="list-group">
+               <li class="list-group-item"><img src="./images/pound-sterling.png" width="20px" height="20px"> Price: £<%= course.price %></li>
+                <li class="list-group-item"><img src="./images/subscribers.png" width="20px" height="20px"> Subscribers: <%= course.num_subscribers %> | <img src="./images/reviews.png" width="20px" height="20px"> Reviews: <%= course.num_reviews %></li>
+                <li class="list-group-item"><img src="./images/lectures.png" width="20px" height="20px"> Lectures: <%= course.num_lectures %></li>
+                <li class="list-group-item"><img src="./images/level.png" width="20px" height="20px"> Level: <%= course.level %></li>
+                <li class="list-group-item"><img src="./images/duration.png" width="20px" height="20px"> Duration: <%= course.content_duration %> hours</li>
+                <li class="list-group-item"><img src="./images/published.png" width="20px" height="20px"> Published: <%= course.published_timestamp %></li>
+                <li class="list-group-item"><img src="./images/subject.png" width="20px" height="20px"> Subject: <%= course.subject %></li>
+         <li class="list-group-item"><center><a href="<%= course.url %>" target="_blank" class="btn btn-primary">View Course <img src="./images/chevron.png" height="16px" width="16px"></a><a href="#" class="btn btn-warning">Remove Favourite <img src="./images/chevron.png" onclick="handleRemove('${course._id}')" height="16px" width="16px"></a></center></li>
+                </ul>
+        </div>
+      </div>
+ </div> 
+
+        <%
+      })
+      %>
+
+        </ul>
+      </div>
+    </div>
+    </div>
+
+
+
+
+
+  </main>
+ 
+  
+      <script src="offcanvas-navbar.js"></script></body>
+      <%- include('common/footer'); -%>
+ 
+  
+  
+ 

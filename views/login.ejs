@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link rel="icon" type="image/x-icon" href="../images/online-course.png">
+    <title>Login | CourseConnect</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+   <!-- Bootstrap CSS -->
+    <link href="../bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../offcanvas-navbar.css" rel="stylesheet" />
+  </head>
+   
+    <body class="bg-body-tertiary">
+    
+     
+        <%- include('common/header'); -%>
+
+    </header>
+ 
+ <main class="container">
+  
+    
+
+
+        
+          
+
+     
+    <div class="my-3 p-3 bg-body rounded shadow-sm align-items-center">
+      <h2 class="border-bottom pb-2 mb-0 "><img src="../images/online-course.png" alt="" title="" width="28px" height="28px"> Login</h2>
+      <div class="d-flex text-body-secondary pt-3">
+    <p class="pb-3 mb-0 small lh-sm border-bottom">
+      
+    
+
+      <form method="POST" action="/login">
+
+
+
+        <div class="col-12">
+          <label for="course" class="form-label">Email Address</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><img src="../images/email.png" width="16px" height="16px"></span>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+            
+            <% if (errors['email']) { %>
+              <p style="color: red"><%= errors['email'].message %></p>
+              <% } %> 
+          </div>
+        </div>
+
+
+
+        <div class="col-12">
+          <label for="course" class="form-label">Password</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><img src="../images/password.png" width="16px" height="16px"></span>
+            <input type="password" class="form-control" placeholder="Enter Password" name="password"> 
+            <% if (errors['password']) { %>
+              <p style="color: red"><%= errors['password'].message %></p>
+              <% } %>
+          </div>
+        </div>
+
+
+
+
+
+
+</div>
+      <br/> 
+
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+
+     </p>
+      </div>
+      
+      </div> 
+     
+    </div>
+ 
+   
+
+
+
+
+
+  </main>
+ 
+  
+      <script src="offcanvas-navbar.js"></script></body>
+      <%- include('common/footer'); -%>
+ 
+  
+  

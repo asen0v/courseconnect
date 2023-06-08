@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link rel="icon" type="image/x-icon" href="../images/online-course.png">
+    <title><%= course.course_title %> | CourseConnect</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+   <!-- Bootstrap CSS -->
+    <link href="../bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../offcanvas-navbar.css" rel="stylesheet" />
+  </head>
+   
+    <body class="bg-body-tertiary">
+    
+     
+        <%- include('common/header'); -%>
+
+    </header>
+ 
+ <main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    <img class="me-3" src="../images/info.png" alt="" width="48" height="48">
+    <div class="lh-1">
+       <p class="pb-3 mb-0 small lh-sm">This page allows you to edit various details of a course, such as the Course ID, Course Title, URL, Price, Subscribers, Reviews, Lectures, Content Duration (in hours), and Select Subject. You can also choose between two options for the course type: Paid or Free.</p>
+      <h1 class="h6 mb-0 text-white lh-1">  </h1>
+     
+    </div>
+  </div>
+
+
+        
+          
+
+     
+    <div class="my-3 p-3 bg-body rounded shadow-sm align-items-center">
+      <h2 class="border-bottom pb-2 mb-0 "><img src="../images/online-course.png" alt="" title="" width="28px" height="28px"> Edit Course</h2>
+      <div class="d-flex text-body-secondary pt-3">
+    <p class="pb-3 mb-0 small lh-sm border-bottom">
+      
+    
+
+      <form method="POST">
+
+ <!--- Course ID Form --->  
+ <div class="col-12">
+  <label for="courseid" class="form-label">Course ID</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/id.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="course_id" placeholder="Enter ID" value="<%= course.course_id %>" name="course_id"> 
+  </div>
+</div>
+
+
+<!--- Course Title Form --->  
+        <div class="col-12">
+          <label for="course" class="form-label">Course Title</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><img src="../images/title.png" width="16px" height="16px"></span>
+            <input type="text" class="form-control" id="course_title" placeholder="Enter Title" value="<%= course.course_title %>" name="course_title"> 
+          </div>
+        </div>
+
+<!--- Course URL Form --->
+<div class="col-12">
+  <label for="url" class="form-label">URL</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/link.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="url" placeholder="Enter URL" value="<%= course.url %>" size="50" name="url"> 
+  </div>
+</div>
+
+<!--- Course Price Form --->
+<div class="col-12">
+  <label for="price" class="form-label">Price</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/pound-sterling.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="price" placeholder="Enter Price" value="<%= course.price %>" size="50" name="price"> 
+  </div>
+</div>
+
+<!--- Course Subscribers Form --->
+<div class="col-12">
+  <label for="num_subscribers" class="form-label">Subscribers</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/subscribers.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="num_subscribers" placeholder="Enter Number Of Subscribers" value="<%= course.num_subscribers %>" size="50" name="num_subscribers"> 
+  </div>
+</div>
+
+<!--- Course Reviews Form --->
+<div class="col-12">
+  <label for="num_reviews" class="form-label">Reviews</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/reviews.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="num_reviews" placeholder="Enter Number Of Reviews" value="<%= course.num_reviews %>" size="50" name="num_reviews"> 
+  </div>
+</div>
+
+
+<!--- Course Lectures Form --->
+<div class="col-12">
+  <label for="num_lectures" class="form-label">Lectures</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/lectures.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="num_lectures" placeholder="Enter Number Of Lectures" value="<%= course.num_lectures %>" size="50" name="num_lectures"> 
+  </div>
+</div>
+
+<!--- Course Duration Form --->
+<div class="col-12">
+  <label for="content_duration" class="form-label">Content Duration <i>(in hours)</i></label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/duration.png" width="16px" height="16px"></span>
+    <input type="text" class="form-control" id="content_duration" placeholder="Enter the duration" value="<%= course.content_duration %>" size="50" name="content_duration"> 
+  </div>
+</div>
+
+<!--- Course Level Form -->
+<div class="form-group">
+  <label for="exampleFormControlSelect1">Select Level</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/level.png" width="16px" height="16px"></span>
+  <select
+    class="form-control"
+    name="level"
+    id="exampleFormControlSelect1"
+  >
+    <% levels.forEach( level => { %>
+     
+      <option id="level" name="level" value="<%= level.level %>"><%= level.level %></option>
+    </div>
+    <% }) %>
+  </select>
+</div>
+
+
+
+<!--- Course Subject Form --->
+
+<div class="form-group">
+  <label for="exampleFormControlSelect1">Select Subject</label>
+  <div class="input-group has-validation">
+    <span class="input-group-text"><img src="../images/subject.png" width="16px" height="16px"></span>
+  <select
+    class="form-control"
+    name="subject"
+    id="exampleFormControlSelect1"
+  >
+    <% subject.forEach( subject => { %>
+     
+    <option id="subject" name="subject" value="<%= subject.category %>"><%= subject.category %></option>
+  </div>
+    <% }) %>
+  </select>
+</div>
+
+
+
+
+
+
+</div>
+      <br/>
+<!--- Course Type Form --->
+<div class="col-12">
+  <label for="is_paid" class="form-label">Type</label>
+  <div class="form-check">
+    <input id="is_paid" name="is_paid" value="true" type="radio" class="form-check-input" required>
+    <label class="badge form-check-label bg-primary-subtle text-primary-emphasis rounded-pill">Paid</label>
+  </div>
+  <div class="form-check">
+    <input id="id_paid" name="is_paid" value="false" type="radio" class="form-check-input" required>
+    <label class="badge form-check-label text-bg-success rounded-pill">Free</label>
+  </div>
+</div>
+        
+
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+
+
+     </p>
+      </div>
+      
+      </div> 
+     
+    </div>
+ 
+   
+
+
+
+
+
+  </main>
+ 
+  
+      <script src="offcanvas-navbar.js"></script></body>
+      <%- include('common/footer'); -%>
+ 
+  
+  

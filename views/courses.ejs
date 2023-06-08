@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link rel="icon" type="image/x-icon" href="images/online-course.png">
+    <title>CourseConnect - Your Course Library - Courses</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+   <!-- Bootstrap CSS -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./offcanvas-navbar.css" rel="stylesheet" />
+  </head>
+   
+    <body class="bg-body-tertiary">
+    
+     
+        <%- include('common/header'); -%>
+
+    </header>
+ 
+ <main class="container">
+  <% if (message) {   %> 
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    <img class="me-3" src="images/online-course.png" alt="" width="48" height="48">
+    <div class="lh-1">
+       
+      <h1 class="h6 mb-0 text-white lh-1"><u><%= message %></u></h1>
+    
+    </div>
+  </div>
+  <% } %>
+  <%  
+        
+          courses.forEach(course => {
+            
+        %>
+
+      
+        <% let badgeClass = course.is_paid ? 'bg-primary-subtle text-primary-emphasis' : 'text-bg-success'; %>
+        <% let badgeText = course.is_paid ? 'Paid' : 'Free'; %>
+      
+        
+          
+
+        <% let subjectImage = ''; %>
+        <% if (course.subject === 'Business Finance') { %>
+          <% subjectImage = 'images/business.png'; %>
+        <% } else if (course.subject === 'Graphic Design') { %>
+          <% subjectImage = 'images/design.png'; %>
+        <% } else if (course.subject === 'Musical Instruments') { %>
+          <% subjectImage = 'images/music.png'; %>
+        <% } else if (course.subject === 'Web Development') { %>
+          <% subjectImage = 'images/web.png'; %>
+        <% } %>
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h6 class="border-bottom pb-2 mb-0"><img src="<%= subjectImage %>" alt="<%= course.subject %>" title="<%= course.subject %>" width="28px" height="28px"> <%=  course.course_title  %>  <% if(user) { %> <span class="badge text-bg-primary rounded-pill" ><a href="/update-course/<%= course.id %>" style="color:white">Edit</a></span> <span class="badge text-bg-danger rounded-pill"><a href="/courses/delete/<%= course.id %>" style="color:white;">Delete</a></span><% } %></h6>
+      <div class="d-flex text-body-secondary pt-3">
+    <p class="pb-3 mb-0 small lh-sm border-bottom">
+          <strong class="d-block text-gray-dark">Subject: <%= course.subject %></strong>
+          <strong class="d-block text-gray-dark">Price: £<%= course.price %></strong>
+          <strong class="d-block text-gray-dark">Subscribers: <%= course.num_subscribers %></strong>
+          <strong class="d-block text-gray-dark">Reviews: <%= course.num_reviews %></strong>
+          <strong class="d-block text-gray-dark">Lectures: <%= course.num_lectures %></strong>
+          <strong class="d-block text-gray-dark">Level: <%= course.level %></strong>
+          <strong class="d-block text-gray-dark">Duration: <%= course.content_duration %> hours</strong>
+          <strong class="d-block text-gray-dark">Type: <span class="badge <%= badgeClass %> rounded-pill"><%= badgeText %></span> </strong><br/>
+          <strong class="d-block text-gray-dark">        <a href="<%= course.url %>" class="btn btn-outline-secondary d-inline-flex align-items-center" target="_blank">Enquire Now
+            <img  src="images/chevron.png" width="20" height="20"></a> 
+            
+          </strong>
+     </p>
+      </div>
+      
+      </div> <%  
+    });
+   %>
+     
+    </div>
+ 
+   
+
+
+    <ul class="pagination">
+
+        <% if (currentPage === 1) { %>
+          
+          <li class="page-item disabled"><a class="page-link" href="#">First</a></li>     
+        <% } %>  
+        <% if (currentPage > 1) { %>
+            <li class="page-item"><a class="page-link" href="/courses">First</a></li>
+        <% } %>  
+
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %>"><%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %>"><%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %>"><%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %>"><%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %>"><%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %>"><%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %>"><%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %>"><%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %>"><%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %></a></li>
+          <li class="page-item"><a class="page-link" href="/courses?page=<%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %>"><%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %></a></li>
+      
+        <% if (currentPage === numberOfPages) { %>
+          
+          <li class="page-item disabled"><a class="page-link" href="">Last</a></li>     
+        <% } %>  
+        
+        <% if (currentPage < numberOfPages) { %>
+            <li class="page-item"><a class="page-link" href="/courses?page=<%= numberOfPages %>">Last</a></li>
+        <% } %>  
+        
+        </ul>
+      
+
+  </main>
+ 
+  
+      <script src="offcanvas-navbar.js"></script></body>
+      <%- include('common/footer'); -%>
+ 
+  
+  

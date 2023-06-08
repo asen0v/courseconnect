@@ -1,0 +1,51 @@
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CourseConnect</a>
+ 
+  
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/courses">View All Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search-courses">Search</a>
+          </li>
+          <% if(user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/favourites">Favourites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-course">Add Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="logout">Logout</a>
+            </li>
+            <li class="nav-item">
+              <span class="badge text-bg-light rounded-pill align-text-bottom">Logged as: <%= user.email %></span>
+               <%
+            } %>
+            </li>
+            <% if(!user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          <% } %>
+  
+        </ul>
+      
+       <img src="https://www.solent.ac.uk/graphics/logo/rebrandLogo.svg" width="48px" height="48px"> &nbsp; &nbsp; 
+       <img src="https://community.udemy.com/t5/image/serverpage/image-id/5267i07ADA4BE049629C1?v=v2" width="120px" height="48px">
+     </div>
+    </div>
+  </nav>
+  
+ 
+  

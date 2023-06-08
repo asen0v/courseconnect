@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link rel="icon" type="image/x-icon" href="images/online-course.png">
+    <title>CourseConnect - Your Course Library - Courses</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+   <!-- Bootstrap CSS -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./offcanvas-navbar.css" rel="stylesheet" />
+    <!-- Search Courses Javascript -->
+    <script src="scripts/search-course.js"></script>
+  </head>
+   
+    <body class="bg-body-tertiary">
+    
+     
+        <%- include('common/header'); -%>
+
+    </header>
+      <div class="container">
+     
+       <br/>
+
+
+        <form class="card p-2">
+        <div class="input-group">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Search courses by name, category, price etc."
+                id="searchInput"
+                />
+                <button onclick="handleSubmit()" class="btn btn-secondary" type="button">
+                        Search
+                </button>
+                    
+            </form></div>
+            <div id="courseItems"></div>
+
+
+         </div>
+
+        </main>
+ 
+  
+        <script src="offcanvas-navbar.js"></script></body>
+        <%- include('common/footer'); -%>

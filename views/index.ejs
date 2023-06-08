@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link rel="icon" type="image/x-icon" href="images/online-course.png">
+    <title>CourseConnect - Your Course Library</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+   <!-- Bootstrap CSS -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./offcanvas-navbar.css" rel="stylesheet" />
+    
+  </head>
+   
+    <body class="bg-body-tertiary">
+    
+     
+ <%- include('common/header'); -%>
+
+ 
+ <div class="nav-scroller bg-body shadow-sm">
+  <nav class="nav" aria-label="Secondary navigation">
+ <a class="nav-link active" aria-current="page" href="#"> <b>Statistics</b></a>
+    <a class="nav-link" href="#">
+      Courses
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= totalCourses %></span>
+    </a>
+    <a class="nav-link" href="#">
+      Subjects
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= totalSubjects %></span>
+    </a> 
+    <a class="nav-link" href="#">
+     |
+   </a>
+    <a class="nav-link" href="#">
+      Under £50
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= coursesUnder50 %></span>
+    </a>
+    <a class="nav-link" href="#">
+      Under £100
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= coursesUnder100 %></span>
+    </a>
+    <a class="nav-link" href="#">
+      Reviews >100
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= reviewsOver100 %></span>
+    </a>
+    <a class="nav-link" href="#">
+      Free
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= countFree %></span>
+    </a>
+    <a class="nav-link" href="#">
+      Paid
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= countPaid %></span>
+    </a>
+    <a class="nav-link" href="#">
+      Subscribers >100
+      <span class="badge text-bg-light rounded-pill align-text-bottom"><%= subsOver100 %></span>
+    </a>
+  </nav>
+</div>
+</header>
+
+ <main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    <img class="me-3" src="images/online-course.png" alt="" width="48" height="48">
+    <div class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1">CourseConnect</h1>
+      <small>Empowering Lifelong Learning with Diversity</small>
+    </div>
+  </div>
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h3 class="border-bottom pb-2 mb-0 text-center">Recent Courses</h3>
+      <%  
+      let count = 0;
+      courses.forEach(course => {
+        if (count < 3) {
+          count++;
+        } else {
+          return; 
+        }
+        
+      %> 
+      
+      <% let badgeClass = course.is_paid ? 'bg-primary-subtle text-primary-emphasis' : 'text-bg-success'; %>
+      <% let badgeText = course.is_paid ? 'Paid' : 'Free'; %>
+    
+      
+        
+
+      <% let subjectImage = ''; %>
+      <% if (course.subject === 'Business Finance') { %>
+        <% subjectImage = 'images/business.png'; %>
+      <% } else if (course.subject === 'Graphic Design') { %>
+        <% subjectImage = 'images/design.png'; %>
+      <% } else if (course.subject === 'Musical Instruments') { %>
+        <% subjectImage = 'images/music.png'; %>
+      <% } else if (course.subject === 'Web Development') { %>
+        <% subjectImage = 'images/web.png'; %>
+      <% } %>
+
+
+       <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h6 class="border-bottom pb-2 mb-0"><img src="<%= subjectImage %>" alt="<%= course.subject %>" title="<%= course.subject %>" width="28px" height="28px"> <%=  course.course_title  %>  <span class="badge <%= badgeClass %> rounded-pill"><%= badgeText %></span> </h6>
+      <div class="d-flex text-body-secondary pt-3 ">
+    <p class="pb-3 mb-0 small lh-sm border-bottom ">
+      <div class="d-flex justify-content-between w-100">
+        <strong class="d-block text-gray-dark">Subject: <%= course.subject %> | Reviews: <%= course.num_reviews %></strong>
+      
+        <a href="<%= course.url %>" class="btn btn-outline-secondary d-inline-flex align-items-center" target="_blank">Enquire Now
+          <img  src="images/chevron.png" width="20" height="20"></a> 
+      
+      </div>
+         
+        
+     </p>  </div>
+     
+    
+    
+   
+</div> <%  
+});
+%>
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h3 class="border-bottom pb-2 mb-0 text-center">Subjects</h3>
+      <% subjectCountSummary.forEach(category => { %>
+
+      
+        <% let subjecttImage = ''; %>
+        <% if (category.subject === 'Business Finance') { %>
+          <% subjecttImage = 'images/business.png'; %>
+        <% } else if (category.subject === 'Graphic Design') { %>
+          <% subjecttImage = 'images/design.png'; %>
+        <% } else if (category.subject === 'Musical Instruments') { %>
+          <% subjecttImage = 'images/music.png'; %>
+        <% } else if (category.subject === 'Web Development') { %>
+          <% subjecttImage = 'images/web.png'; %>
+        <% } %>
+  
+        <div class="d-flex text-body-secondary pt-3">
+                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+            <div class="d-flex justify-content-between">
+              <strong class="text-gray-dark"> <img src="<%= subjecttImage %>" alt="<%= category.subject %>" title="<%= category.subject %>" width="28px" height="28px"> <%= category.subject %> <span class="badge text-bg-primary rounded-pill"><%= category.total %> courses </span>   <span class="badge text-bg-success rounded-pill"><%= category.free %> free </span>    <span class="badge text-bg-warning rounded-pill"><%= category.paid %> paid </span></strong>
+              <button class="btn btn-outline-secondary d-inline-flex align-items-center"  type="button">View Courses
+                <img  src="images/chevron.png" width="20" height="20"></button> 
+          </div>
+         
+        </div>
+      </div>
+      <%  
+});
+%>
+     
+    </div>
+    
+  </main>
+ 
+  
+      <script src="offcanvas-navbar.js"></script></body>
+      <%- include('common/footer'); -%>
+ 
+  
+  
